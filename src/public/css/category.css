@@ -1,0 +1,48 @@
+@import url("layouts/width.css");
+
+.form__title {
+    text-align: center;
+    font-size: 25px;
+
+    h2 {
+        margin: 75px auto;
+    }
+}
+
+.category__item {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid #808080;
+    padding: 5px 10px;
+
+    input {
+        width: 100%;
+        text-align: left;
+        font-size: 20px;
+        border: none;
+        background: none;
+        color: #000;
+        display: block;
+    }
+}
+
+.category__item::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    margin: auto;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.category__item:last-child {
+    border-bottom: 1px solid #808080;
+}

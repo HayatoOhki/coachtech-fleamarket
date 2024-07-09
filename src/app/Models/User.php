@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image',
+        'post_code',
+        'address',
+        'buliding',
+        'payment_id',
+        'delete_at',
     ];
 
     /**
@@ -41,4 +47,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function favorites() {
+        return $this->hasMany(Favorite::class);
+    }
+    
+    public function favorite_items() {
+        return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id');
+    }
+
+    public function is_favorite($item_id) {
+        return $this->favorites()->where('item_id', $item_id)->exists();
+    }
 }

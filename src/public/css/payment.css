@@ -1,0 +1,15 @@
+@import url("layouts/layouts/width.css");
+@import url("layouts/form.css");
+
+.form__input-radio {
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input {
+        inline-size: 20px;
+        block-size: 20px;
+        margin-right: 10px;
+    }
+}

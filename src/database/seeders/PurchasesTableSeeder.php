@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class PurchasesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +15,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('users')->truncate();
+        DB::table('purchases')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $SplFileObject = new \SplFileObject(__DIR__ . '/data/users.csv');
+        $SplFileObject = new \SplFileObject(__DIR__ . '/data/purchases.csv');
         $SplFileObject->setFlags(
             \SplFileObject::READ_CSV |
             \SplFileObject::READ_AHEAD |
@@ -28,23 +26,18 @@ class UsersTableSeeder extends Seeder
             \SplFileObject::DROP_NEW_LINE
         );
 
-        $faker = Faker::create('ja_JP');
-
         foreach ($SplFileObject as $key => $row) {
             if ($key === 0) {
                 continue;
             }
 
             $params[] = [
-                'email' => trim($row[0]),
-                'password' => Hash::make(trim($row[1])),
-                'role' => trim($row[2]),
-                'post_code' => $faker->postcode(),
-                'address' => $faker->prefecture() . $faker->city() . $faker->streetAddress(),
-                'building' => $faker->secondaryAddress(),
+                'user_id' => trim($row[0]),
+                'item_id' => trim($row[1]),
+                'payment_id' => trim($row[2]),
             ];
         }
 
-        DB::table('users')->insert($params);
+        DB::table('purchases')->insert($params);
     }
 }

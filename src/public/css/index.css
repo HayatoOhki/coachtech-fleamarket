@@ -1,0 +1,14 @@
+@import url("layouts/tab_menu.css");
+@import url("layouts/item_card.css");
+
+/********** alert **********/
+.alert--success {
+    text-align: center;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0ff;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}

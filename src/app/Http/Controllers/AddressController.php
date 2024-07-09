@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use App\Http\Requests\AddressRequest;
+use Illuminate\Http\Request;
+
+class AddressController extends Controller
+{
+    // 配送先変更画面表示
+    public function showAddress($item_id) {
+        $user_id = \Auth::id();
+        $user = User::find($user_id)->only('post_code', 'address', 'building');
+        return view('address', compact(
+            'item_id',
+            'user',
+        ));
+    }
+
+    // 配送先変更
+    public function updateAddress(AddressRequest $request) {
+        $address = $request->only('post_code', 'address', 'building');
+        $user_id = \Auth::id();
+        User::find($user_id)->update($address);
+        return redirect()->action([ItemController::class, 'createPurchase'], ['item_id' => $request->input('item_id')]);
+    }
+}
