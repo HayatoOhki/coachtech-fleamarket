@@ -21,10 +21,18 @@
         <div class="tab__panel--box is-show" data-panel="01">
             @if(!empty($items))
                 @foreach($items as $item)
+                    @if(Auth::check())
+                        @if(Auth::user()->is_sell($item['id']))
+                            @continue
+                        @endif
+                    @endif
                     <div class="item__card">
                         <a class="item__card--link" href="/item/{{ $item['id'] }}">
                             <div class="item__card--image">
                                 <img src="{{ $item['image_1'] }}" alt="{{ $item['name'] }}">
+                                @if($item->is_purchase($item['id']))
+                                    <p>SOLD OUT</p>
+                                @endif
                             </div>
                             <div class="item__card--name">
                                 <h3>{{ $item['name'] }}</h3>

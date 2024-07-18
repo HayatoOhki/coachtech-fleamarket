@@ -5,14 +5,15 @@
 @endsection
 
 @section('content')
-<form class="from" action="/purchase/address/{{ $item_id }}" method="POST">
+<form action="/purchase/address/update" method="POST">
     @csrf
     <input type="hidden" name="item_id" value="{{ $item_id }}">
     <div class="form__title">
         <h2 >住所の変更</h2>
     </div>
-    <div class="form__input">
+    <div class="form__input post_code">
         <p>郵便番号</p>
+        <span>〒</span>
         <input type="text" name="post_code" value="{{ $user['post_code'] }}"></input>
         <div class="form__error">
             @error('post_code')
@@ -39,7 +40,7 @@
         </div>
     </div>
     <div class="form__button">
-        <input type="submit" value="更新する">
+        <input type="button" onclick="submit();" value="更新する">
     </div>
 </form>
 @endsection

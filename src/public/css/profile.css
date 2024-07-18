@@ -1,0 +1,21 @@
+@import url("layouts/width.css");
+@import url("layouts/form.css");
+
+
+.form__input-image {
+    display: flex;
+    align-items: center;
+}
+
+#form__input-image_preview,
+#file__upload-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+}
+
+.form__input-file {
+    margin-left: 5%;
+}

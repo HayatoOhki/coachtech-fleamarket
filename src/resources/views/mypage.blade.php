@@ -12,6 +12,19 @@
         </div>
     @endif
 </div>
+<div class="profile__area">
+    <div class="profile">
+        <img @if(!empty(Auth::user()->image)) src="{{ asset($user['image']) }}" alt="{{ Auth::user()->name }}" @endif>
+        @if(!empty(Auth::user()->name))
+            <p>{{ Auth::user()->name }}</p>
+        @else
+            <p>ユーザー{{ Auth::user()->id }}</p>
+        @endif
+    </div>
+    <div class="profile__edit">
+        <a href="/mypage/profile">プロフィールを編集</a>
+    </div>
+</div>
 <div class="tab">
     <ul class="tab__menu">
         <li class="tab__menu--item is-active" data-tab="01">出品した商品</li>

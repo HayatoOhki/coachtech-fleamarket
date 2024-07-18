@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Purchase;
-use App\Http\Requests\ItemRequest;
+use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\SellRequest;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
     // トップページ表示
     public function showIndex() {
-        $items = Item::select('items.id', 'items.name', 'items.price', 'items.image_1', 'purchases.item_id')
-            ->leftjoin('purchases', 'items.id', '=', 'purchases.item_id')
-            ->where('purchases.item_id', '=', null)
-            ->get();
+        $items = Item::all();
         if(\Auth::check()) {
             $favorite_items = \Auth::user()->favorite_items()->get();
             return view('index', compact(
@@ -34,43 +33,63 @@ class ItemController extends Controller
 
     // 商品詳細ページ表示
     public function showDetail($item_id) {
-        $item = Item::with('category')->find($item_id);
-        $categories = Category::all();
-        $favorite_count = Favorite::where('item_id', '=', $item_id)->count();
+        $item = Item::find($item_id);
+        $category = new Category;
+        $item = $category->searchParentCategory($item);
+        $comments = Comment::with('user')->where('item_id', $item_id)->get();
+        $favorite_count = Favorite::where('item_id', $item_id)->count();
+        $comment_count = Comment::where('item_id', $item_id)->count();
         return view('detail', compact(
             'item',
-            'categories',
+            'comments',
             'favorite_count',
+            'comment_count',
         ));
     }
 
     // 検索機能
     public function search(Request $request) {
-        $items = Item::KeywordSearch($request->keyword)->get();
         $keyword = $request->keyword;
+        $items = Item::SearchKeyword($keyword)->get();
         return view('index', compact(
             'items',
             'keyword',
         ));
     }
 
+    // コメント登録処理
+    public function storeComment(CommentRequest $request) {
+        $comment = $request->all();
+        $comment['user_id'] = \Auth::id();
+        Comment::create($comment);
+        return back()->with('message', 'コメントを送信しました');
+    }
+    
+    // コメント削除処理
+    public function destroyComment(Request $request) {
+        Comment::destroy($request->comment_id);
+        return back()->with('message', 'コメントを削除しました');
+    }
+
     // 出品画面表示
-    public function createSell() {
-        $categories = Category::where('parent_id', '=', '0')->get();  
+    public function createSell(Request $request) {
+        $item = $request->only('category_id');
+        $category = new Category;
+        $item = $category->searchParentCategory($item);
         return view('sell', compact(
-            'categories',
+            'item',
         ));
     }
 
     // 商品登録処理
-    public function storeSell(ItemRequest $request) {
+    public function storeSell(SellRequest $request) {
         $item = $request->all(); 
         $item['user_id'] = \Auth::id();
         $count = 1;
-        foreach($request->file('upload_file.images') as $image) {
+        foreach($request->file('upload_file.item_images') as $image) {
             $imageName = $image->getClientOriginalName();
-            $image->storeAs('images', $imageName, 'public');
-            $item['image_' . $count] = 'storage/images/' . $imageName;
+            $image->storeAs('item_images', $imageName, 'public');
+            $item['image_' . $count] = 'storage/item_images/' . $imageName;
             $count++;
         }
         Item::create($item);

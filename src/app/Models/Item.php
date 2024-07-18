@@ -24,13 +24,19 @@ class Item extends Model
         'image_5',
     ];
 
-    public function scopeKeywordSearch($query, $keyword) {
-        if (!empty($keyword)) {
+    public function purchase() {
+        return $this->hasOne(Purchase::class);
+    }
+
+    // キーワード検索
+    public function scopeSearchKeyword($query, $keyword) {
+        if(!empty($keyword)) {
             $query->where('name', 'like', '%' . $keyword . '%');
         }
     }
-    
-    public function category() {
-        return $this->belongsTo(Category::class);
+
+    // 購入済み判定
+    public function is_purchase($item_id) {
+        return $this->purchase()->where('item_id', $item_id)->exists();
     }
 }

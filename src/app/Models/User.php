@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'profile_image',
+        'image',
         'post_code',
         'address',
         'buliding',
@@ -48,15 +48,40 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function items() {
+        return $this->hasMany(Item::class);
+    }
+
+    // 自分が出品した商品か判定
+    public function is_sell($item_id) {
+        return $this->items()->where('id', $item_id)->exists();
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    // 自分が送信したコメントか判定
+    public function is_comment($comment_id) {
+        return $this->comments()->where('id', $comment_id)->exists();
+    }
+
     public function favorites() {
         return $this->hasMany(Favorite::class);
     }
+
+    // お気に入り登録の判定
+    public function is_favorite($item_id) {
+        return $this->favorites()->where('item_id', $item_id)->exists();
+    }
     
+    // お気に入り登録した商品の一覧を取得
     public function favorite_items() {
         return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id');
     }
-
-    public function is_favorite($item_id) {
-        return $this->favorites()->where('item_id', $item_id)->exists();
+    
+    // 購入した商品の一覧を取得
+    public function purchase_items() {
+        return $this->belongsToMany(Item::class, 'purchases', 'user_id', 'item_id');
     }
 }

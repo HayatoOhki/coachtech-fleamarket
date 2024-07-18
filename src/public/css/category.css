@@ -16,14 +16,16 @@
     border-top: 1px solid #808080;
     padding: 5px 10px;
 
+    a,
     input {
         width: 100%;
         text-align: left;
         font-size: 20px;
-        border: none;
-        background: none;
         color: #000;
         display: block;
+        text-decoration: none;
+        background: none;
+        border: none;
     }
 }
 

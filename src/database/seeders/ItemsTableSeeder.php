@@ -25,11 +25,11 @@ class ItemsTableSeeder extends Seeder
                 'brand' => 'サンプルブランド',
                 'description' => 'サンプルテキスト',
                 'price' => mt_rand(1000, 10000), // 価格のランダム設定
-                'image_1' => 'storage/images/sample_image_1.png',
-                'image_2' => 'storage/images/sample_image_2.png',
-                'image_3' => 'storage/images/sample_image_3.png',
-                'image_4' => 'storage/images/sample_image_4.png',
-                'image_5' => 'storage/images/sample_image_5.png',
+                'image_1' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_2' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_3' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_4' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_5' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
             ];
         }
 

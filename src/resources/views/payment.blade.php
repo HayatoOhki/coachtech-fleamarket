@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="from" action="/purchase/payment/{{ $item_id }}" method="POST">
+<form action="/purchase/payment/update" method="POST">
     @csrf
     <input type="hidden" name="item_id" value="{{ $item_id }}">
     <div class="form__title">

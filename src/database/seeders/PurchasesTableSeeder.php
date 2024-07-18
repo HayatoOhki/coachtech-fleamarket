@@ -14,30 +14,23 @@ class PurchasesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('purchases')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $create_item_count = 10; // シーディングするアイテム数
 
-        $SplFileObject = new \SplFileObject(__DIR__ . '/data/purchases.csv');
-        $SplFileObject->setFlags(
-            \SplFileObject::READ_CSV |
-            \SplFileObject::READ_AHEAD |
-            \SplFileObject::SKIP_EMPTY |
-            \SplFileObject::DROP_NEW_LINE
-        );
-
-        foreach ($SplFileObject as $key => $row) {
-            if ($key === 0) {
+        for($i = 1; $i <= $create_item_count; $i++) {
+            $rand_user_id = mt_rand(2, 6); // 一般ユーザーのid:2~6
+            $rand_item_id = mt_rand(1, 30); // アイテムのid:1~30
+            $user_id = DB::table('items')->where('id', $rand_item_id)->value('user_id');
+            if($rand_user_id == $user_id) {
                 continue;
+            } else {
+                $params[] = [
+                    'user_id' => $rand_user_id,
+                    'item_id' => $rand_item_id,
+                    'payment_id' => mt_rand(1, 3), // 支払い方法のid:1~3
+                ];
             }
-
-            $params[] = [
-                'user_id' => trim($row[0]),
-                'item_id' => trim($row[1]),
-                'payment_id' => trim($row[2]),
-            ];
         }
-
+        
         DB::table('purchases')->insert($params);
     }
 }

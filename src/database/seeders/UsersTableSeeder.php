@@ -36,9 +36,11 @@ class UsersTableSeeder extends Seeder
             }
 
             $params[] = [
+                'name' => $faker->name(),
                 'email' => trim($row[0]),
                 'password' => Hash::make(trim($row[1])),
                 'role' => trim($row[2]),
+                'image' => 'storage/profile_images/sample_image_' . mt_rand(1, 50) . '.jpg',
                 'post_code' => $faker->postcode(),
                 'address' => $faker->prefecture() . $faker->city() . $faker->streetAddress(),
                 'building' => $faker->secondaryAddress(),

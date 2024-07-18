@@ -8,13 +8,17 @@
 <div class="form__title">
     <h2>カテゴリー一覧</h2>
 </div>
-<form class="category__list" action="/sell/category" method="POST">
-    @csrf
-    @foreach($categories as $category)
-        <div class="category__item">
-            <input type="hidden" name="main_category" value="{{ $category['id'] }}">
-            <input type="submit" value="{{ $category['name'] }}">
-        </div>
-    @endforeach
-</form>
+@foreach($categories as $category)
+    <div class="category__item">
+        @if($category['end'] == 0)
+            <a href="/sell/category/{{ $category['id'] }}">{{ $category['name'] }}</a>
+        @elseif($category['end'] == 1)
+            <form class="category" action="/sell" method="POST">
+                @csrf
+                <input type="hidden" name="category_id" value="{{ $category['id'] }}">
+                <input type="submit" value="{{ $category['name'] }}">
+            </form>
+        @endif
+    </div>
+@endforeach
 @endsection

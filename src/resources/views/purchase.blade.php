@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="right-side">
-    <form class="form__purchase" action="/purchase/{{ $item['id'] }}" method="POST">
+    <form action="/purchase/store" method="POST">
         @csrf
         <input type="hidden" name="item_id" value="{{ $item['id'] }}">
         <input type="hidden" name="payment_id" value="{{ $user['payment_id'] }}">

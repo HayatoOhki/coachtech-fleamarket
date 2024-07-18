@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="from" action="?" method="POST" enctype="multipart/form-data">
+<form action="/sell/store" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form__title">
         <h2>商品の出品</h2>
@@ -16,10 +16,10 @@
         </div>
         <div class="form__input-file">
             <button type="button" id="file__upload-button">画像を選択する</button>
-            <input type="file" id="file__upload-input" name="upload_file[images][]" accept="image/*" multiple></input>
+            <input type="file" id="file__upload-input" name="upload_file[item_images][]" accept="image/*" multiple></input>
         </div>
         <div class="form__error">
-            @error('upload_file.images.0')
+            @error('upload_file.item_images.0')
             {{ $message }}
             @enderror
         </div>
@@ -29,8 +29,19 @@
     </div>
     <div class="form__select-button">
         <p>カテゴリ―</p>
-        <input type="hidden" name="category_id" value="1000">
-        <input type="submit" formaction="/sell/category" value="カテゴリーを選択する">
+        @if(empty($item))
+        <a href="/sell/category">カテゴリーを選択する</a>
+        @else
+        <div class="category">
+                <input type="hidden" name="category_id" value="{{ $item['category_id'] }}">
+                <span>{{ $item['main_category'] }}</span>
+                <span>></span>
+                <span>{{ $item['sub_category'] }}</span>
+                <span>></span>
+                <span>{{ $item['category'] }}</span>
+            </div>
+            <a href="/sell/category">変更する</a>
+        @endif
         <div class="form__error">
             @error('category_id')
             {{ $message }}
@@ -95,10 +106,10 @@
         </div>
     </div>
     <div class="form__button">
-        <input type="submit" formaction="/sell" value="出品する">
+        <input type="button" onclick="submit();" value="出品する">
     </div>
 </form>
 
-<script src="{{ asset('js/file_upload.js') }}"></script>
+<script src="{{ asset('js/sell_preview_image.js') }}"></script>
 
 @endsection

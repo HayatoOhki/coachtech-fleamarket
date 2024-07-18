@@ -5,13 +5,14 @@
     width: 100%;
     display: flex;
     gap: 1%;
-    align-content: start;
+    align-items: center;
+    justify-content: start;
 
     figure {
         margin: 20px 0;
         position: relative;
         max-height: 150px;
-        min-width: 19%;
+        width: 19%;
         text-align-last: left;
     }
 }
@@ -20,6 +21,7 @@
     max-height: 150px;
     max-width: 100%;
     object-fit: cover;
+
 }
 
 .file__upload-rmbutton {
@@ -32,24 +34,48 @@
     background: none;
     color: #000;
     margin: 5px;
+    background-color: #fff;
 }
 
 .form__input-file {
     border: 2px dotted #808080;
     padding: 50px;
     text-align: center;
+}
 
-    button {
-        padding: 10px 20px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #f55;
-        background: none;
-        border: 2px solid #f55;
-        border-radius: 10px;
+.category {
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.form__input.price {
+    span {
+        position: absolute;
+        margin: 10px;
     }
 
     input {
-        display: none;
+        text-align: right;
     }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+    }
+}
+
+/********** 任意入力表示 **********/
+.optional {
+    p::after {
+        content: "任意";
+        background-color: #808080;
+        font-size: 15px;
+        color: #fff;
+        border-radius: 5px;
+        margin: auto 10px;
+        padding: 1px 3px;
+    }
+
 }

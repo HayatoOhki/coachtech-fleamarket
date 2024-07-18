@@ -1,3 +1,43 @@
 @import url("layouts/tab_menu.css");
 @import url("layouts/item_card.css");
+@import url("layouts/alert.css");
 
+.profile__area {
+    min-height: 200px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    width: 50%;
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        background-color: #d9d9d9;
+    }
+
+    p {
+        display: inline;
+        font-size: 30px;
+        font-weight: bold;
+        margin-left: 10%;
+    }
+}
+
+.profile__edit {
+    a {
+        padding: 10px 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #f55;
+        background: none;
+        border: 2px solid #f55;
+        border-radius: 10px;
+        text-decoration: none;
+
+    }
+}

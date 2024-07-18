@@ -17,7 +17,7 @@
     </header>
     <main>
         <div class="main__content">
-            <form class="from" action="/login" method="POST">
+            <form action="/login" method="POST">
                 @csrf
                 <div class="form__title">
                     <h2 >ログイン</h2>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="form__button">
-                    <input type="submit" value="ログインする">
+                    <input type="button" onclick="submit();" value="ログインする">
                 </div>
                 <div class="form__link">
                     <a href="/register">会員登録はこちら</a>

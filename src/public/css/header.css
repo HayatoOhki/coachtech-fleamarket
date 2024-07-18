@@ -19,7 +19,6 @@ body {
 
 .header__nav--form {
     width: 40%;
-
 }
 
 .header__nav--input {
@@ -38,16 +37,17 @@ body {
 }
 
 .header__nav--item {
-    min-width: 150px;
+    width: 150px;
     font-size: 20px;
-    margin: auto;
-    padding: 10px 20px;
+    margin: 0 10px;
+    padding: 10px 0;
     font-weight: bold;
     border-radius: 5px;
     text-align: center;
     a {
         text-decoration: none;
         color: #fff;
+        display: block;
     }
     input {
         font-size: 20px;

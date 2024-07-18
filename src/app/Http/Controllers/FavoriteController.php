@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
+    // お気に入り登録
     public function storeFavorite(Request $request) {
         $user = \Auth::user();
         $item_id = $request->only(['item_id']);
@@ -15,6 +16,8 @@ class FavoriteController extends Controller
         }
         return back();
     }
+
+    // お気に入り解除
     public function destroyFavorite(Request $request) {
         $user = \Auth::user();
         $item_id = $request->only(['item_id']);

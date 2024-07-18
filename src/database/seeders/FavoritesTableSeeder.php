@@ -14,7 +14,7 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        $create_item_count = 50; // シーディングするアイテム数
+        $create_item_count = 100; // シーディングするアイテム数
 
         for($i = 1; $i <= $create_item_count; $i++) {
             $tentative_params[] = [
