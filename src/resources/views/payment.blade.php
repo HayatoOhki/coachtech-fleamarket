@@ -9,7 +9,7 @@
     @csrf
     <input type="hidden" name="item_id" value="{{ $item_id }}">
     <div class="form__title">
-        <h2 >支払方法の変更</h2>
+        <h2>支払方法の変更</h2>
     </div>
     <div class="form__input">
          <div class="form__input-radio">

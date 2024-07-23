@@ -20,7 +20,7 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="form__title">
-                    <h2 >ログイン</h2>
+                    <h2>ログイン</h2>
                 </div>
                 <div class="form__input">
                     <p>メールアドレス</p>

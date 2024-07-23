@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    // 配送先変更画面表示
+    // 配送先変更ページ表示
     public function createAddress($item_id) {
         $user_id = \Auth::id();
         $user = User::find($user_id)->only('post_code', 'address', 'building');

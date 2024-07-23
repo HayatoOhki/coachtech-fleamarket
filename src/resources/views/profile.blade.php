@@ -8,7 +8,7 @@
 <form action="/mypage/profile/update" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form__title">
-        <h2 >プロフィール設定</h2>
+        <h2>プロフィール設定</h2>
     </div>
     <div class="form__input">
         <div class="form__input-image">

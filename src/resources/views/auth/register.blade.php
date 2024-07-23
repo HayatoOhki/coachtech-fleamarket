@@ -20,7 +20,7 @@
             <form action="/register" method="POST">
                 @csrf
                 <div class="form__title">
-                    <h2 >会員登録</h2>
+                    <h2>会員登録</h2>
                 </div>
                 <div class="form__input">
                     <p>メールアドレス</p>

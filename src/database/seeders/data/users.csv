@@ -1,7 +1,7 @@
 email,password,role
-admin001@example.com,adminpassword001,administrator
-user001@example.com,userpassword001,user
-user002@example.com,userpassword002,user
-user003@example.com,userpassword003,user
-user004@example.com,userpassword004,user
-user005@example.com,userpassword005,user
+admin001@example.com,adminpassword001,1
+user001@example.com,userpassword001,2
+user002@example.com,userpassword002,2
+user003@example.com,userpassword003,2
+user004@example.com,userpassword004,2
+user005@example.com,userpassword005,2

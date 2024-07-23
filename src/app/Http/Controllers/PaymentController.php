@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    // 支払方法変更画面表示
+    // 支払方法変更ページ表示
     public function createPayment($item_id) {
         return view('payment', compact(
             'item_id',

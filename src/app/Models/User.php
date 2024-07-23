@@ -84,4 +84,9 @@ class User extends Authenticatable
     public function purchase_items() {
         return $this->belongsToMany(Item::class, 'purchases', 'user_id', 'item_id');
     }
+
+    // 管理者判定
+    public function is_admin() {
+        return User::where('role', 1)->exists();
+    }
 }

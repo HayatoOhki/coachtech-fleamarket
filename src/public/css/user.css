@@ -1,0 +1,59 @@
+@import url("layouts/alert.css");
+@import url("layouts/paginate.css");
+
+.table__user {
+    font-size: 25px;
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+    table {
+        width: 100%;
+    }
+    th {
+        border-bottom: solid 2px;
+        padding: 10px;
+    }
+    td {
+        border-bottom: solid 1px;
+        padding: 10px;
+    }
+}
+
+.id {
+    width: 10%;
+}
+
+.name {
+    width: 20%;
+}
+
+.email {
+    width: 40%;
+}
+
+.role, .delete {
+    width: 15%;
+}
+
+.title {
+    text-align: center;
+    font-size: 25px;
+
+    h2 {
+        margin: 75px auto;
+    }
+}
+
+.delete__button {
+    font-size: 20px;
+
+    button {
+        padding: 5px 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #f55;
+        background: none;
+        border: 2px solid #f55;
+        border-radius: 10px;
+    }
+}

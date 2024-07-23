@@ -17,7 +17,7 @@ class FavoriteController extends Controller
         return back();
     }
 
-    // お気に入り解除
+    // お気に入り削除
     public function destroyFavorite(Request $request) {
         $user = \Auth::user();
         $item_id = $request->only(['item_id']);

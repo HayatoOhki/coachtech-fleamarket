@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class MypageController extends Controller
 {
     // マイページ表示
-    public function showmypage() {
+    public function showMypage() {
         $user = \Auth::user();
         $sell_items = Item::where('user_id', \Auth::id())->get();
         $purchase_items = \Auth::user()->purchase_items()->get();
@@ -21,7 +21,7 @@ class MypageController extends Controller
         ));
     }
 
-    // プロフィール変更画面表示
+    // プロフィール変更ページ表示
     public function createProfile() {
         $user = \Auth::user();
         return view('profile', compact(

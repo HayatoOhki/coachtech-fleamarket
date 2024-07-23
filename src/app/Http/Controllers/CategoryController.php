@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    // カテゴリー選択画面表示
+    // カテゴリー選択ページ表示
     public function showCategory($category_id = null) {
         if(is_null($category_id)) {
             $categories = Category::where('parent_id', 0)->get();

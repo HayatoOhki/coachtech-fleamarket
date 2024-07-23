@@ -110,7 +110,7 @@
                             @else
                                 <p>ユーザー{{ $comment['user']['id'] }}</p>
                             @endif
-                            @if(Auth::user()->is_sell($item['id']) || Auth::user()->is_comment($comment['id']))
+                            @if(Auth::user()->is_sell($item['id']) || Auth::user()->is_comment($comment['id']) || Auth::user()->role === 1)
                                 <form action="/item/comment/destroy" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -143,6 +143,6 @@
     </div>
 </div>
 
-<script src="{{ asset('js/comment.js') }}"></script>
+<script src="{{ asset('js/delete_button.js') }}"></script>
 
 @endsection
