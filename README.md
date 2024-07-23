@@ -23,7 +23,9 @@
 1. [サービスについて](#サービスについて)
 2. [環境](#環境)
 3. [開発環境構築](#開発環境構築)
-4. [ER図](#ER図)
+4. [URL](#URL)
+5. [ログイン情報](#ログイン情報)
+6. [ER図](#ER図)
 
 ## サービスについて
 
@@ -106,6 +108,20 @@ docker-compose down
 | DB_DATABASE            | laravel                            | laravel_db                               |
 | DB_USERNAME            | root                               | laravel_user                             |
 | DB_PASSWORD            |                                    | laravel_pass                             |
+
+## URL
+・開発環境：http://localhost/
+・phpMyAdmin：http://localhost:8080/
+
+## ログイン情報
+| メールアドレス           | パスワード                         | 権限                                      |
+| ---------------------- | ---------------------------------- | ---------------------------------------- |
+| admin001@example.com   | adminpassword001                   | 管理者                                    |
+| user001@example.com    | userpassword001                    | ユーザー                                  |
+| user002@example.com    | userpassword002                    | ユーザー                                  |
+| user003@example.com    | userpassword003                    | ユーザー                                  |
+| user004@example.com    | userpassword004                    | ユーザー                                  |
+| user005@example.com    | userpassword005                    | ユーザー                                  |
 
 ## ER図
 ![index](https://github.com/user-attachments/assets/fd5cfe92-d605-44de-a458-45b1e8954f99)
