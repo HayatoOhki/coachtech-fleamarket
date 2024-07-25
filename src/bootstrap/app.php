@@ -15,14 +15,14 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-switch ($_SERVER['REMOTE_ADDR'] ?? '127.0.0.1') {
+switch ($_SERVER['HTTP_HOST'] ?? 'prod') {
     // 開発環境
-    case '127.0.0.1':
+    case 'localhost':
         $app->loadEnvironmentFrom('env/.env.dev');
         break;
 
     // 本番環境
-    case '3.112.5.135':
+    case 'prod':
         $app->loadEnvironmentFrom('env/.env.prod');
         break;
 }
