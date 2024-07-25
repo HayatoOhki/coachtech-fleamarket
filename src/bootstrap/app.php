@@ -18,11 +18,9 @@ $app = new Illuminate\Foundation\Application(
 if($_SERVER['HTTP_HOST'] == 'localhost') {
     // 開発環境
     $app->loadEnvironmentFrom('env/.env.dev');
-    break;
 } else {
     // 本番環境
     $app->loadEnvironmentFrom('env/.env.prod');
-    break;
 }
 
 /*
