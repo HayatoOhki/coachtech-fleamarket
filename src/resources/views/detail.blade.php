@@ -64,7 +64,7 @@
                 <div class="sold-out">
                     <a tabindex="-1">SOLD OUT</a>
                 </div>
-                @elseif(Auth::user()->is_sell($item['id']))
+                @elseif(Auth::check() && Auth::user()->is_sell($item['id']))
                     <a tabindex="-1">あなたが出品した商品です</a>
                 @else
                     <a href="/purchase/{{ $item['id'] }}">購入する</a>
@@ -103,20 +103,22 @@
             <div class="comment__display">
                 @foreach($comments as $comment)
                     <div class="comment">
-                        <div class="comment__user @if(Auth::user()->is_comment($comment['id'])) self @endif">
+                        <div class="comment__user @if(Auth::check() && Auth::user()->is_comment($comment['id'])) self @endif">
                             <img @if(!empty($comment['user']['image'])) src="{{ asset($comment['user']['image']) }}" alt="{{ $comment['user']['name'] }}" @endif>
                             @if(!empty($comment['user']['name']))
                                 <p>{{ $comment['user']['name'] }}</p>
                             @else
                                 <p>ユーザー{{ $comment['user']['id'] }}</p>
                             @endif
-                            @if(Auth::user()->is_sell($item['id']) || Auth::user()->is_comment($comment['id']) || Auth::user()->role === 1)
-                                <form action="/item/comment/destroy" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="comment_id" value="{{ $comment['id'] }}">
-                                    <button type="submit" class="comment__delete--button" onclick="return click()"><i class="fa-solid fa-trash"></i></button>
-                                </form>
+                            @if(Auth::check())
+                                @if(Auth::user()->is_sell($item['id']) || Auth::user()->is_comment($comment['id']) || Auth::user()->role === 1)
+                                    <form action="/item/comment/destroy" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="comment_id" value="{{ $comment['id'] }}">
+                                        <button type="submit" class="comment__delete--button" onclick="return click()"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                @endif
                             @endif
                         </div>
                         <div class="comment__content">
