@@ -15,18 +15,6 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-switch ($_SERVER['HTTP_HOST'] ?? 'prod') {
-    // 開発環境
-    case 'localhost':
-        $app->loadEnvironmentFrom('env/.env.dev');
-        break;
-
-    // 本番環境
-    case 'prod':
-        $app->loadEnvironmentFrom('env/.env.prod');
-        break;
-}
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
