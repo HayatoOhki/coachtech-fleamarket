@@ -15,6 +15,15 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// .envファイルの読み込み処理を追加
+$envFile = 'env/.env.' . env('APP_ENV', 'development'); // デフォルトはdevelopment環境
+
+if (file_exists(base_path($envFile))) {
+    $dotenv = Dotenv\Dotenv::createImmutable(base_path(), $envFile);
+    $dotenv->load();
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
