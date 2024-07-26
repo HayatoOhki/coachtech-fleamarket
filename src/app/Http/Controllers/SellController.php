@@ -26,8 +26,13 @@ class SellController extends Controller
         $count = 1;
         foreach($request->file('upload_file.item_images') as $image) {
             $imageName = $image->getClientOriginalName();
-            $image->storeAs('item_images', $imageName, 'public');
-            $item['image_' . $count] = 'storage/item_images/' . $imageName;
+            if(env('APP_ENV', 'development') == 'development') {
+                $image->storeAs('item_images', $imageName, 'public');
+                $item['image_' . $count] = 'storage/item_images/' . $imageName;
+            } else {
+                $image->storeAs('item_images', $imageName, 's3');
+                $item['image_' . $count] = 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/' . $imageName;
+            }
             $count++;
         }
         Item::create($item);

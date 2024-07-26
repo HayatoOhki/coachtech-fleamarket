@@ -25,11 +25,11 @@ class ItemsTableSeeder extends Seeder
                 'brand' => 'サンプルブランド',
                 'description' => 'サンプルテキスト',
                 'price' => mt_rand(1000, 10000), // 価格のランダム設定
-                'image_1' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
-                'image_2' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
-                'image_3' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
-                'image_4' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
-                'image_5' => 'storage/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_1' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_2' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_3' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_4' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image_5' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/sample_image_' . mt_rand(1, 50) . '.jpg',
             ];
         }
 

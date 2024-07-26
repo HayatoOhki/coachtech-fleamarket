@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
                 'email' => trim($row[0]),
                 'password' => Hash::make(trim($row[1])),
                 'role' => trim($row[2]),
-                'image' => 'storage/profile_images/sample_image_' . mt_rand(1, 50) . '.jpg',
+                'image' => 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/profile_images/sample_image_' . mt_rand(1, 50) . '.jpg',
                 'post_code' => $faker->postcode(),
                 'address' => $faker->prefecture() . $faker->city() . $faker->streetAddress(),
                 'building' => $faker->secondaryAddress(),
