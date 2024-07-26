@@ -6,16 +6,17 @@
   <!-- フロントエンドのフレームワーク一覧 -->
   
   <!-- フロントエンドの言語一覧 -->
-  <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=plastic">
+  <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=for-the-badge">
   <!-- バックエンドのフレームワーク一覧 -->
-  <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">
+  <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=for-the-badge">
   <!-- バックエンドの言語一覧 -->
-  <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">
+  <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=for-the-badge">
   <!-- ミドルウェア一覧 -->
-  <img src="https://img.shields.io/badge/-Nginx-269539.svg?logo=nginx&style=plastic">
-  <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">
+  <img src="https://img.shields.io/badge/-Nginx-269539.svg?logo=nginx&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=for-the-badge">
   <!-- インフラ一覧 -->
-  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=plastic">
+  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=for-the-badge">
 </p>
 
 ## 目次
@@ -88,6 +89,7 @@
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed
+7. php artisan storage:link
 
 ### 動作確認
 http://localhost にアクセスできるか確認
