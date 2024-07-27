@@ -20,6 +20,6 @@ class PaymentController extends Controller
         $payment_id = $request->only('payment_id');
         $user_id = \Auth::id();
         User::find($user_id)->update($payment_id);
-        return redirect()->action([ItemController::class, 'createPurchase'], ['item_id' => $request->input('item_id')]);
+        return redirect()->action([PurchaseController::class, 'createPurchase'], ['item_id' => $request->input('item_id')]);
     }
 }

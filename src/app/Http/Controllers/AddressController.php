@@ -24,6 +24,6 @@ class AddressController extends Controller
         $address['post_code'] = str_replace('-', '', $address['post_code']);
         $user_id = \Auth::id();
         User::where('id', $user_id)->update($address);
-        return redirect()->action([ItemController::class, 'createPurchase'], ['item_id' => $request->input('item_id')]);
+        return redirect()->action([PurchaseController::class, 'createPurchase'], ['item_id' => $request->input('item_id')]);
     }
 }

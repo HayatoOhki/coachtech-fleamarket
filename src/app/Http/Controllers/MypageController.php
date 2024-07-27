@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\User;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MypageController extends Controller
 {
@@ -35,13 +36,15 @@ class MypageController extends Controller
         $profile['post_code'] = str_replace('-', '', $profile['post_code']);
         $image = $request->file('upload_file.profile_image.0');
         $imageName = $image->getClientOriginalName();
-        if(env('APP_ENV', 'development') == 'development') {
-            $image->storeAs('profile_images', $imageName, 'public');
-            $profile['image'] = 'storage/profile_images/' . $imageName;
+        if(config('env.app_env') == 'local') {
+            $destination = 'public';
+            $url = 'storage/profile_images/';
         } else {
-            $image->storeAs('profile_images', $imageName, 's3');
-            $profile['image'] = 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/profile_images/' . $imageName;
+            $destination = 's3';
+            $url = 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/profile_images/';
         }
+        $image->storeAs('profile_images', $imageName, $destination);
+        $profile['image'] = $url . $imageName;
         $user_id = \Auth::id();
         User::where('id', $user_id)->update($profile);
         return redirect('/mypage')->with('message', 'プロフィールを変更しました');

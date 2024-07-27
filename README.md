@@ -91,12 +91,14 @@ http://localhost にアクセスできるか確認
 docker-compose down
 
 ## URL
+### 開発環境
 ・phpMyAdmin：http://localhost:8080/  
-・開発環境（トップページ）：http://localhost/  
-・開発環境（管理者ページ）：http://localhost/admin/user
+・トップページ：http://localhost/  
+・管理者ページ：http://localhost/admin/user
 
-・本番環境（トップページ）：http://52.195.174.1  
-・本番環境（管理者ページ）：http://52.195.174.1/admin/user
+### 本番環境
+・トップページ：http://52.195.174.1  
+・管理者ページ：http://52.195.174.1/admin/user
 
 ## ログイン情報
 | メールアドレス           | パスワード                         | 権限                                      |

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Http\Requests\SellRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SellController extends Controller
 {
@@ -26,13 +27,15 @@ class SellController extends Controller
         $count = 1;
         foreach($request->file('upload_file.item_images') as $image) {
             $imageName = $image->getClientOriginalName();
-            if(env('APP_ENV', 'development') == 'development') {
-                $image->storeAs('item_images', $imageName, 'public');
-                $item['image_' . $count] = 'storage/item_images/' . $imageName;
+            if(config('env.app_env') == 'local') {
+                $destination = 'public';
+                $url = 'storage/item_images/';
             } else {
-                $image->storeAs('item_images', $imageName, 's3');
-                $item['image_' . $count] = 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/' . $imageName;
+                $destination = 's3';
+                $url = 'https://coachtech-fleamarket-bucket.s3.ap-northeast-1.amazonaws.com/item_images/';
             }
+            $image->storeAs('item_images', $imageName, $destination);
+            $item['image_' . $count] = $url . $imageName;
             $count++;
         }
         Item::create($item);
