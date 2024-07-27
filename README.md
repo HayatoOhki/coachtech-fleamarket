@@ -33,7 +33,6 @@
 <!-- プロジェクトの概要を記載 -->
 ### サービス名：coachtechフリマ
 ### 概要：
-
 当サービスは、coachtechブランドのアイテムを売買できるフリマアプリです。  
 シンプルで使いやすいインターフェースと、豊富な機能を備えており、ユーザーが効率的に取引を行えるように設計されています。
 
@@ -77,7 +76,7 @@
 ### Laravel環境構築
 1. docker-compose exec php bash
 2. composer install
-3. /env/.env.dev ファイルから .env を作成する
+3. cp /env/.env.dev .env
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed
