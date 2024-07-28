@@ -69,18 +69,20 @@
 
 ### Dockerビルド
 1. git clone git@github.com:HayatoOhki/coachtech-fleamarket.git
-2. docker-compose up -d --build
+2. cd coachtech-fleamarket
+3. docker-compose up -d --build
 
 ※MySQLは、OSによって起動しない場合があるのでそれぞれのPCに合わせて docker-compose.yml ファイルを編集してください。
 
 ### Laravel環境構築
 1. docker-compose exec php bash
 2. composer install
-3. cp /env/.env.dev .env
+3. cp env/.env.dev .env
 4. php artisan key:generate
-5. php artisan migrate
-6. php artisan db:seed
-7. php artisan storage:link
+5. php artisan migrate --seed
+※上記のコマンドを実行しても「Nothing to migrate.」が返ってくる場合以下のコマンドを実行  
+※既にテーブル内にデータが入っている場合は、それらが消えてしまうため注意
+5. php artisan migrate:fresh --seed
 
 ### 動作確認
 http://localhost にアクセスできるか確認  

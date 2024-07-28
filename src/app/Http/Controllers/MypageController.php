@@ -36,7 +36,7 @@ class MypageController extends Controller
         $profile['post_code'] = str_replace('-', '', $profile['post_code']);
         $image = $request->file('upload_file.profile_image.0');
         $imageName = $image->getClientOriginalName();
-        if(config('env.app_env') == 'local') {
+        if(config('app.env') == 'local') {
             $destination = 'public';
             $url = 'storage/profile_images/';
         } else {

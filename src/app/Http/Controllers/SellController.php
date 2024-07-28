@@ -27,7 +27,7 @@ class SellController extends Controller
         $count = 1;
         foreach($request->file('upload_file.item_images') as $image) {
             $imageName = $image->getClientOriginalName();
-            if(config('env.app_env') == 'local') {
+            if(config('app.env') == 'local') {
                 $destination = 'public';
                 $url = 'storage/item_images/';
             } else {
