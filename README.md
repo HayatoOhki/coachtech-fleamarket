@@ -79,7 +79,7 @@
 2. composer install
 3. cp env/.env.dev .env
 4. php artisan key:generate
-5. php artisan migrate --seed
+5. php artisan migrate --seed  
 ※上記のコマンドを実行しても「Nothing to migrate.」が返ってくる場合以下のコマンドを実行  
 ※既にテーブル内にデータが入っている場合は、それらが消えてしまうため注意
 5. php artisan migrate:fresh --seed
