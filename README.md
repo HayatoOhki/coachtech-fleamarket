@@ -1,116 +1,175 @@
-<div id="top"></div>
+# Coachtech Flea Market 🛍️
 
-## 使用技術一覧
+[![Laravel](https://img.shields.io/badge/-Laravel%208-EA4335?logo=laravel&logoColor=white)](https://laravel.com/)
+[![PHP](https://img.shields.io/badge/-PHP%208.1-8892BF?logo=php&logoColor=white)](https://www.php.net/)
+[![Docker](https://img.shields.io/badge/-Docker-blue?logo=docker&logoColor=white)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-<p style="display: inline">
-  <!-- フロントエンドのフレームワーク一覧 -->
-  
-  <!-- フロントエンドの言語一覧 -->
-  <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=for-the-badge">
-  <!-- バックエンドのフレームワーク一覧 -->
-  <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=for-the-badge">
-  <!-- バックエンドの言語一覧 -->
-  <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=for-the-badge">
-  <!-- ミドルウェア一覧 -->
-  <img src="https://img.shields.io/badge/-Nginx-269539.svg?logo=nginx&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=for-the-badge">
-  <!-- インフラ一覧 -->
-  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=for-the-badge">
-</p>
+---
 
-## 目次
+## 📖 Table of Contents  
+1. [Overview / 概要](#overview--概要)  
+2. [Demo](#demo)  
+3. [Features](#features)  
+4. [Tech Stack](#tech-stack)  
+5. [Getting Started](#getting-started)  
+6. [Project Structure](#project-structure)  
+7. [URLs & Demo Accounts](#urls--demo-accounts)  
+8. [Database ER Diagram](#database-er-diagram)  
+9. [Roadmap](#roadmap)  
+10. [Author](#author)  
+11. [License](#license)  
 
-1. [サービスについて](#サービスについて)
-2. [環境](#環境)
-3. [開発環境構築](#開発環境構築)
-4. [URL](#URL)
-5. [ログイン情報](#ログイン情報)
-6. [ER図](#ER図)
+---
 
-## サービスについて
+## Overview / 概要
 
-<!-- プロジェクトの概要を記載 -->
-### サービス名：coachtechフリマ
-### 概要：
-当サービスは、coachtechブランドのアイテムを売買できるフリマアプリです。  
-シンプルで使いやすいインターフェースと、豊富な機能を備えており、ユーザーが効率的に取引を行えるように設計されています。
+**Coachtech Flea Market** は **COACHTECH** ブランド専用アイテムを売買できる **C2C フリマアプリ** です。  
+“**シンプルな UI** × **充実した取引機能**” により、だれでも安心して売買を楽しめることを目指しています。
 
-### 主な機能：
-1. ユーザー登録とプロフィール管理  
-    ユーザーはメールアドレスを使用して登録し、プロフィール情報を設定できます。
+| 開発規模 | 期間 | 担当領域 |
+| --- | --- | --- |
+| 個人開発 (Solo) | 2025‑06 ~ 2025‑07 (約 6 週間) | 企画・設計・実装・テスト・CI/CD |
 
-2. 商品の出品と検索  
-    ユーザーは商品の写真と詳細を追加して出品できます。キーワードを使用した検索機能で商品を探すことができます。
+---
 
-3. 取引機能  
-    ユーザー同士でのメッセージを通じて取引ができます。取引履歴を通じて信頼性のある取引が促進されます。
+## Demo
 
-4. アカウントの削除(管理者のみ)  
-    管理者はユーザー一覧画面からユーザーの削除を行えます。  
-    削除後はそのユーザーのプロフィール情報、出品情報、取引履歴などはすべて完全に消去されます。
+| User App | Admin Dashboard |
+| --- | --- |
+| ![User Top](https://github.com/user-attachments/assets/7fc76049-67fc-49d9-84ea-5cbd01c921ac) | ![Admin](https://github.com/user-attachments/assets/7fc76049-67fc-49d9-84ea-5cbd01c921ac) |
 
-![スクリーンショット 2024-07-23 150552](https://github.com/user-attachments/assets/7fc76049-67fc-49d9-84ea-5cbd01c921ac)
+<https://52.195.174.1>
 
-## 環境
+> ⚠️ **初回アクセス時は自動スリープ解除のため 30 秒ほどお待ちください**
 
-<!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
+---
 
-| 言語・フレームワーク    | バージョン  |
-| --------------------- | ---------- |
-| PHP                   | 8.1.18     |
-| Laravel               | 8.83.8     |
-| nginx                 | 1.21.1     |
-| MySQL                 | 8.0.26     |
+## Features
 
-## 開発環境構築
+- **ユーザー登録 & プロフィール編集**  (Laravel Breeze + Tailwind)
+- **商品 CRUD** ・複数画像アップロード (S3 互換 MinIO)
+- **全文検索 / カテゴリ・タグフィルタ**  (MySQL FULLTEXT)
+- **取引チャット & 状態管理**  (Enum, Eloquent Observer)
+- **管理者ダッシュボード** – ユーザー・商品停止／物理削除
+- **CI/CD** – GitHub Actions → DockerHub → Amazon ECS
+- **自動テスト** – PHPUnit / Pest, Feature & Unit 45+ Cases
+- **静的解析** – PHPStan, Larastan (level 9)
 
-<!-- コンテナの作成方法、パッケージのインストール方法など、開発環境構築に必要な情報を記載 -->
+---
 
-### Dockerビルド
-1. git clone git@github.com:HayatoOhki/coachtech-fleamarket.git
-2. cd coachtech-fleamarket
-3. docker-compose up -d --build
+## Tech Stack
 
-※MySQLは、OSによって起動しない場合があるのでそれぞれのPCに合わせて docker-compose.yml ファイルを編集してください。
+| Layer | Tech | Version |
+| --- | --- | --- |
+| Backend | **Laravel** | 8.83.8 |
+| Language | **PHP** | 8.1.18 |
+| DB | **MySQL** | 8.0.26 |
+| Web server | **Nginx** | 1.21.1 |
+| Infrastructure | **Docker / docker‑compose** | v2 |
+| CI/CD | GitHub Actions, AWS ECS Fargate |
+| Others | phpMyAdmin, PHPUnit, PHPStan |
 
-### Laravel環境構築
-1. docker-compose exec php bash
-2. composer install
-3. cp env/.env.dev .env
-4. php artisan key:generate
-5. php artisan migrate --seed  
-※上記のコマンドを実行しても「Nothing to migrate.」が返ってくる場合以下のコマンドを実行  
-※既にテーブル内にデータが入っている場合は、それらが消えてしまうため注意
-6. php artisan migrate:fresh --seed
+---
 
-### 動作確認
-http://localhost にアクセスできるか確認  
-アクセスできたら成功
+## Getting Started
 
-### コンテナの停止
-以下のコマンドでコンテナを停止することができます  
-docker-compose down
+### Prerequisites
+- Docker Desktop 4.0+
+- Git
 
-## URL
-### 開発環境
-・phpMyAdmin：http://localhost:8080/  
-・トップページ：http://localhost/  
-・管理者ページ：http://localhost/admin/user
+### Quick Start
 
-### 本番環境
-・トップページ：http://52.195.174.1  
-・管理者ページ：http://52.195.174.1/admin/user
+```bash
+# 1. Clone
+git clone https://github.com/HayatoOhki/coachtech-fleamarket.git
+cd coachtech-fleamarket
 
-## ログイン情報
-| メールアドレス           | パスワード                         | 権限                                      |
-| ---------------------- | ---------------------------------- | ---------------------------------------- |
-| admin001@example.com   | adminpassword001                   | 管理者                                    |
-| user001@example.com    | userpassword001                    | ユーザー                                  |
-| user002@example.com    | userpassword002                    | ユーザー                                  |
-| user003@example.com    | userpassword003                    | ユーザー                                  |
-| user004@example.com    | userpassword004                    | ユーザー                                  |
-| user005@example.com    | userpassword005                    | ユーザー                                  |
+# 2. Build & up
+docker compose up -d --build
 
-## ER図
-![index](https://github.com/user-attachments/assets/fd5cfe92-d605-44de-a458-45b1e8954f99)
+# 3. Initialize Laravel
+docker compose exec php bash -c "composer install \
+  && cp env/.env.dev .env \
+  && php artisan key:generate \
+  && php artisan migrate:fresh --seed"
+
+# 4. Access
+open http://localhost
+```
+> **MySQL が起動しない場合** は OS に合わせて `docker-compose.yml` のポート／ボリューム設定を調整してください。
+
+### Stop Containers
+```bash
+docker compose down
+```
+
+---
+
+## Project Structure
+
+```
+├── app/           # Laravel application (Domain, Service, Repository layers)
+├── database/
+│   ├── migrations
+│   └── seeders/
+├── public/
+├── resources/
+├── tests/
+└── docker/
+    ├── nginx/
+    └── php/
+```
+
+---
+
+## URLs & Demo Accounts
+
+| Environment | URL |
+| --- | --- |
+| **Dev** | <http://localhost> |
+| **Admin (Dev)** | <http://localhost/admin/user> |
+| **Prod** | <https://52.195.174.1> |
+| **Admin (Prod)** | <https://52.195.174.1/admin/user> |
+| phpMyAdmin | <http://localhost:8080> |
+
+| Email | Password | Role |
+| --- | --- | --- |
+| admin001@example.com | adminpassword001 | Admin |
+| user001@example.com | userpassword001 | User |
+| user002@example.com | userpassword002 | User |
+| user003@example.com | userpassword003 | User |
+| user004@example.com | userpassword004 | User |
+| user005@example.com | userpassword005 | User |
+
+---
+
+## Database ER Diagram
+
+![ER diagram](https://github.com/user-attachments/assets/fd5cfe92-d605-44de-a458-45b1e8954f99)
+
+---
+
+## Roadmap
+
+- [ ] 商品のお気に入り機能
+- [ ] 決済 (Stripe)
+- [ ] 通知 (Laravel Notification + Pusher)
+- [ ] E2E テスト (Playwright)
+
+---
+
+## Author
+
+|  |  |
+| --- | --- |
+| **Hayato Ohki** | Freelance Full‑Stack Engineer |
+| Tech | PHP / Laravel / TypeScript / AWS |
+| LinkedIn | <https://www.linkedin.com/in/> |
+| X (Twitter) | [@hayato_ohki](https://twitter.com/hayato_ohki) |
+
+---
+
+## License
+
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
